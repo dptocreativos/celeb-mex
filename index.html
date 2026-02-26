@@ -23,7 +23,7 @@
 <link rel="icon" href="https://celebramexico.com/static/Favicon%20-%20Celebra.jpg" type="image/png">
 <link rel="stylesheet" href="https://celebramexico.com/style.css">
 
-  <style>
+<style>
 #new-preloader {
     position: fixed;
     top: 0; left: 0;
@@ -38,7 +38,6 @@
     transition: opacity 0.25s ease;
 }
 
-/* Subir TODO (logo + barra) 40px */
 #new-preloader .content-wrapper {
     transform: translateY(-40px);
     display: flex;
@@ -51,7 +50,6 @@
     margin-bottom: 25px;
 }
 
-/* Barra */
 .loader-bar {
     width: 250px;
     height: 11px;
@@ -65,7 +63,7 @@
     width: 0%;
     background: #7e15e8;
     border-radius: 20px;
-    animation: fillBar 4s linear forwards; /* 4 segundos reales */
+    animation: fillBar 5s linear forwards; /* 5 segundos */
 }
 
 @keyframes fillBar {
@@ -77,7 +75,6 @@
 <script>
 document.addEventListener("DOMContentLoaded", function () {
 
-    // Crear preloader dinámicamente para que funcione desde HEAD
     const loader = document.createElement("div");
     loader.id = "new-preloader";
 
@@ -92,11 +89,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
     document.body.appendChild(loader);
 
-    // Desaparece exactamente al terminar los 4s
     setTimeout(() => {
         loader.style.opacity = "0";
         setTimeout(() => loader.remove(), 250);
-    }, 4000);
+    }, 5000); // 5 segundos exactos
 
 });
 </script>
