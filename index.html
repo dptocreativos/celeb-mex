@@ -24,6 +24,84 @@
 <link rel="stylesheet" href="https://celebramexico.com/style.css">
 
   <style>
+#new-preloader {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: #ffffff;
+    z-index: 999999;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    opacity: 1;
+    transition: opacity 0.25s ease;
+}
+
+/* Subir TODO (logo + barra) 40px */
+#new-preloader .content-wrapper {
+    transform: translateY(-40px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#new-preloader img {
+    width: 240px;
+    margin-bottom: 25px;
+}
+
+/* Barra */
+.loader-bar {
+    width: 250px;
+    height: 11px;
+    background: #e6e6e6;
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+.loader-fill {
+    height: 100%;
+    width: 0%;
+    background: #7e15e8;
+    border-radius: 20px;
+    animation: fillBar 4s linear forwards; /* 4 segundos reales */
+}
+
+@keyframes fillBar {
+    from { width: 0%; }
+    to { width: 100%; }
+}
+</style>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+
+    // Crear preloader dinámicamente para que funcione desde HEAD
+    const loader = document.createElement("div");
+    loader.id = "new-preloader";
+
+    loader.innerHTML = `
+        <div class="content-wrapper">
+            <img src="https://static.wixstatic.com/media/ca65cb_290f450818fb49588e0fefe5b7a8fbe7~mv2.webp" />
+            <div class="loader-bar">
+                <div class="loader-fill"></div>
+            </div>
+        </div>
+    `;
+
+    document.body.appendChild(loader);
+
+    // Desaparece exactamente al terminar los 4s
+    setTimeout(() => {
+        loader.style.opacity = "0";
+        setTimeout(() => loader.remove(), 250);
+    }, 4000);
+
+});
+</script>
+
+  <style>
     html, body {
       margin: 0;
       padding: 0;
